@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="surenav_ll">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.15 0.0 0.17"
+        rpy="0 0 0" />
+      <mass
+        value="13.27" />
+      <inertia
+        ixx="0.33"
+        ixy="0.00"
+        ixz="0.03"
+        iyy="0.27"
+        iyz="0.00"
+        izz="0.14" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.17"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.34" radius="0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="r_hip_yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.08 0.00 -0.09"
+        rpy="0 0 0" />
+      <mass
+        value="3.17" />
+      <inertia
+        ixx="0.01"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.02"
+        iyz="0.00"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_hip_yaw_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="r_hip_yaw_joint"
+    type="continuous">
+    <origin
+      xyz="0.016506 -0.1 -0.026"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="r_hip_yaw_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="r_hip_roll_link">
+    <inertial>
+      <origin
+        xyz="0.00 0.02 0.00"
+        rpy="0 0 0" />
+      <mass
+        value="2.44" />
+      <inertia
+        ixx="0.01"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.00"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_hip_roll_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="r_hip_roll_joint"
+    type="continuous">
+    <origin
+      xyz="-0.001999993716754 0 -0.111300000335593"
+      rpy="0 0 0" />
+    <parent
+      link="r_hip_yaw_link" />
+    <child
+      link="r_hip_roll_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="r_hip_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.00 0.01 -0.19"
+        rpy="0 0 0" />
+      <mass
+        value="5.27" />
+      <inertia
+        ixx="0.05"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.04"
+        iyz="0.00"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_hip_pitch_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="r_hip_pitch_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="r_hip_roll_link" />
+    <child
+      link="r_hip_pitch_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="r_knee_link">
+    <inertial>
+      <origin
+        xyz="0.02 0.00 -0.08"
+        rpy="0 0 0" />
+      <mass
+        value="2.19" />
+      <inertia
+        ixx="0.03"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.03"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_knee_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="r_knee_joint"
+    type="continuous">
+    <origin
+      xyz="8.90422801721746E-05 -0.00199999999999427 -0.360035173572729"
+      rpy="0 0 0" />
+    <parent
+      link="r_hip_pitch_link" />
+    <child
+      link="r_knee_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="r_ankle_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.01 0.00 0.00"
+        rpy="0 0 0" />
+      <mass
+        value="0.15" />
+      <inertia
+        ixx="9.14169347532514E-10"
+        ixy="3.76489693052083E-10"
+        ixz="1.3620702406152E-10"
+        iyy="0.00"
+        iyz="1.82076506118357E-10"
+        izz="0.00" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_ankle_pitch_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="r_ankle_pitch_joint"
+    type="continuous">
+    <origin
+      xyz="0.000997412382606738 0 -0.350014948599999"
+      rpy="0 0 0" />
+    <parent
+      link="r_knee_link" />
+    <child
+      link="r_ankle_pitch_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="r_ankle_roll_link">
+    <inertial>
+      <origin
+        xyz="0.02 0.00 -0.04"
+        rpy="0 0 0" />
+      <mass
+        value="1.93" />
+      <inertia
+        ixx="0.00"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.01"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/r_ankle_roll_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.035 0 -0.045"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.25 0.15 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r_ankle_roll_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 5.60144157897291E-05"
+      rpy="0 0 0" />
+    <parent
+      link="r_ankle_pitch_link" />
+    <child
+      link="r_ankle_roll_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="l_hip_yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.08 0.00 -0.09"
+        rpy="0 0 0" />
+      <mass
+        value="3.17" />
+      <inertia
+        ixx="0.01"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.02"
+        iyz="0.00"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_hip_yaw_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="l_hip_yaw_joint"
+    type="continuous">
+    <origin
+      xyz="0.016506 0.1 -0.026"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="l_hip_yaw_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="l_hip_roll_link">
+    <inertial>
+      <origin
+        xyz="0.00 -0.02 0.00"
+        rpy="0 0 0" />
+      <mass
+        value="2.44" />
+      <inertia
+        ixx="0.01"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.00"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_hip_roll_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="l_hip_roll_joint"
+    type="continuous">
+    <origin
+      xyz="-0.002 0 -0.1113"
+      rpy="0 0 0" />
+    <parent
+      link="l_hip_yaw_link" />
+    <child
+      link="l_hip_roll_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="l_hip_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.00 -0.01 -0.19"
+        rpy="0 0 0" />
+      <mass
+        value="5.61" />
+      <inertia
+        ixx="0.05"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.04"
+        iyz="0.00"
+        izz="0.02" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_hip_pitch_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="l_hip_pitch_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="l_hip_roll_link" />
+    <child
+      link="l_hip_pitch_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="l_knee_link">
+    <inertial>
+      <origin
+        xyz="0.02 0.00 -0.08"
+        rpy="0 0 0" />
+      <mass
+        value="2.19" />
+      <inertia
+        ixx="0.03"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.03"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_knee_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.890196078431372 0.890196078431372 0.913725490196078 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="l_knee_joint"
+    type="continuous">
+    <origin
+      xyz="0.00103756952385898 0 -0.359882712287639"
+      rpy="0 0 0" />
+    <parent
+      link="l_hip_pitch_link" />
+    <child
+      link="l_knee_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="l_ankle_pitch_link">
+    <inertial>
+      <origin
+        xyz="-0.03 0.00 0.00"
+        rpy="0 0 0" />
+      <mass
+        value="0.19" />
+      <inertia
+        ixx="0.00"
+        ixy="-3.76490173411526E-10"
+        ixz="1.36207024060003E-10"
+        iyy="0.00"
+        iyz="-1.82076485447733E-10"
+        izz="0.00" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_ankle_pitch_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.498039215686275 0.498039215686275 0.498039215686275 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="l_ankle_pitch_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.349994948634218"
+      rpy="0 0 0" />
+    <parent
+      link="l_knee_link" />
+    <child
+      link="l_ankle_pitch_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="l_ankle_roll_link">
+    <inertial>
+      <origin
+        xyz="0.03 0.00 -0.04"
+        rpy="0 0 0" />
+      <mass
+        value="1.85" />
+      <inertia
+        ixx="0.00"
+        ixy="0.00"
+        ixz="0.00"
+        iyy="0.01"
+        iyz="0.00"
+        izz="0.01" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/l_ankle_roll_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.035 0 -0.045"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.25 0.15 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_ankle_roll_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 5.60157164942732E-05"
+      rpy="0 0 0" />
+    <parent
+      link="l_ankle_pitch_link" />
+    <child
+      link="l_ankle_roll_link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>
