@@ -4,54 +4,70 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="surenav_ll">
-  <link name="world"/>
-  <include filename="$(find surenav_description)/urdf/surenav_ll.gazebo" />
-  <link
-    name="base_link">
-    <inertial>
-      <origin
-        xyz="0.15 0.0 0.17"
-        rpy="0 0 0" />
-      <mass
-        value="13.27" />
-      <inertia
-        ixx="0.33"
-        ixy="0.00"
-        ixz="0.03"
-        iyy="0.27"
-        iyz="0.00"
-        izz="0.14" />
-    </inertial>
-    <visual>
-      <origin
-        xyz="0 0 0"
-        rpy="0 0 0" />
-      <geometry>
-        <mesh
-          filename="package://surenav_description/meshes/base_link.dae" />
-      </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
-      </material>
-    </visual>
-    <collision>
-      <origin
-        xyz="0 0 0.17"
-        rpy="0 0 0" />
-      <geometry>
-        <cylinder length="0.34" radius="0.1"/>
-      </geometry>
-    </collision>
-  </link>
-  <joint name="fixed" type="fixed">
-    <parent link="world"/>
-    <child link="base_link"/>
-    <origin
-      xyz="0.0 -0.0 0.9"
-      rpy="0 0 0" />
-  </joint>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/surenav_ll</robotNamespace>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="r_hip_yaw_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="r_hip_roll_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="r_hip_pitch_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="r_knee_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="r_ankle_pitch_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="r_ankle_roll_link">
+    <mu1>1000</mu1>
+    <mu2>1000</mu2>
+    <kp>1000000.0</kp>
+    <kd>100000.0</kd>
+    <slip1>0</slip1>
+    <slip2>0</slip2>
+  </gazebo>
+  <gazebo reference="l_hip_yaw_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="l_hip_roll_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="l_hip_pitch_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="l_knee_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="l_ankle_pitch_link">
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+  <gazebo reference="l_ankle_roll_link">
+    <mu1>1000</mu1>
+    <mu2>1000</mu2>
+    <kp>1000000.0</kp>
+    <kd>100000.0</kd>
+    <slip1>0</slip1>
+    <slip2>0</slip2>
+  </gazebo>
   
   <gazebo reference="camera_depth_frame">
     <sensor name="camera1" type="depth">
@@ -82,24 +98,72 @@
         <frameName>camera_depth_optical_frame</frameName>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
-        <distortion_k1>0.0</distortion_k1>
-        <distortion_k2>0.0</distortion_k2>
-        <distortion_k3>0.0</distortion_k3>
-        <distortion_t1>0.0</distortion_t1>
-        <distortion_t2>0.0</distortion_t2>
-        <!--
-		<CxPrime>0</CxPrime>
-		<Cx>0</Cx>
-		<Cy>0</Cy>
-		<focalLength>0</focalLength>
-		<hackBaseline>0</hackBaseline>
--->
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
   </gazebo>
+
+  <!--<link name="world"/>-->
+  <!--<include filename="$(find surenav_description)/urdf/surenav_ll.gazebo" /> -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0.0 0.92"
+        rpy="0 0 0" />
+      <mass
+        value="13.27" />
+      <inertia
+        ixx="0.33"
+        ixy="0.00"
+        ixz="0.03"
+        iyy="0.27"
+        iyz="0.00"
+        izz="0.14" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0.92"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://surenav_description/meshes/base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.92"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.34" radius="0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <!--<joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin
+      xyz="0.0 -0.0 0.92"
+      rpy="0 0 0" />
+  </joint> -->
+
   <!-- Parameterised in part by the values in kinect_properties.urdf.xacro -->
   <joint name="camera_rgb_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0.16 0 0.48"/>
+    <origin rpy="0 0 0" xyz="0.16 0 1.4"/>
     <parent link="base_link"/>
     <child link="camera_rgb_frame"/>
   </joint>
@@ -209,7 +273,7 @@
     name="r_hip_yaw_joint"
     type="continuous">
     <origin
-      xyz="0.016506 -0.1 -0.026"
+      xyz="0.016506 -0.1 0.894"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -217,7 +281,7 @@
       link="r_hip_yaw_link" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="r_hip_roll_link">
@@ -262,7 +326,7 @@
       link="r_hip_roll_link" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="r_hip_pitch_link">
@@ -307,7 +371,7 @@
       link="r_hip_pitch_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="r_knee_link">
@@ -352,7 +416,7 @@
       link="r_knee_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="r_ankle_pitch_link">
@@ -397,7 +461,7 @@
       link="r_ankle_pitch_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="r_ankle_roll_link">
@@ -431,11 +495,20 @@
     </visual>
     <collision>
       <origin
-        xyz="0.035 0 -0.045"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <box size="0.25 0.15 0.01"/>
+        <mesh
+          filename="package://surenav_description/meshes/r_ankle_roll_link.dae" />
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>10</mu>
+            <mu2>10</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
   <joint
@@ -450,7 +523,7 @@
       link="r_ankle_roll_link" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_hip_yaw_link">
@@ -487,7 +560,7 @@
     name="l_hip_yaw_joint"
     type="continuous">
     <origin
-      xyz="0.016506 0.1 -0.026"
+      xyz="0.016506 0.1 0.894"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -495,7 +568,7 @@
       link="l_hip_yaw_link" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_hip_roll_link">
@@ -540,7 +613,7 @@
       link="l_hip_roll_link" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_hip_pitch_link">
@@ -585,7 +658,7 @@
       link="l_hip_pitch_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_knee_link">
@@ -630,7 +703,7 @@
       link="l_knee_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_ankle_pitch_link">
@@ -675,7 +748,7 @@
       link="l_ankle_pitch_link" />
     <axis
       xyz="0 1 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
   <link
     name="l_ankle_roll_link">
@@ -709,11 +782,20 @@
     </visual>
     <collision>
       <origin
-        xyz="0.035 0 -0.045"
+        xyz="0 0 0"
         rpy="0 0 0" />
       <geometry>
-        <box size="0.25 0.15 0.01"/>
+        <mesh
+          filename="package://surenav_description/meshes/l_ankle_roll_link.dae" />
       </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>100</mu>
+            <mu2>100</mu2>
+          </ode>
+        </friction>
+      </surface>
     </collision>
   </link>
   <joint
@@ -728,6 +810,138 @@
       link="l_ankle_roll_link" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.7"/>
+    <dynamics damping="0.7" />
   </joint>
+
+  <transmission name="r_hip_yaw_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_hip_yaw_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_hip_yaw_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="r_hip_roll_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_hip_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_hip_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="r_hip_pitch_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_hip_pitch_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_hip_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="r_knee_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_knee_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="r_ankle_pitch_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_ankle_pitch_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_ankle_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="r_ankle_roll_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="r_ankle_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="r_ankle_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="l_hip_yaw_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_hip_yaw_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_hip_yaw_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_hip_roll_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_hip_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_hip_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_hip_pitch_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_hip_pitch_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_hip_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_knee_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_knee_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_knee_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_ankle_pitch_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_ankle_pitch_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_ankle_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="l_ankle_roll_tran">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="l_ankle_roll_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="l_ankle_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 </robot>
