@@ -5,14 +5,15 @@
     <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start">
       <param name="frame_id"            type="string" value="base_link"/>
       
-      <param name="subscribe_depth"     type="bool"   value="true"/>
+      <param name="subscribe_depth"     type="bool"   value="false"/>
       <param name="subscribe_scan"      type="bool"   value="false"/>
       <param name="subscribe_scan_cloud"      type="bool"   value="true"/>
-      
-      <remap from="rgb/image"       to="/camera1/image_raw"/>
-      <remap from="depth/image"     to="/camera1/depth/image_raw"/>
-      <remap from="rgb/camera_info" to="/camera1/depth/camera_info"/>
-      <remap from="scan_cloud"            to="/camera1/depth/points"/>
+
+      <remap from="odom"       to="/odom"/>
+      <remap from="rgb/image"       to="/image_raw"/>
+      <remap from="depth/image"     to="/depth_image_raw"/>
+      <remap from="rgb/camera_info" to="/camera_info"/>
+      <remap from="scan_cloud"      to="/point_cloud"/>
       
       <param name="queue_size" type="int" value="100"/>
     
@@ -31,13 +32,13 @@
       <param name="Mem/RehearsalSimilarity"      type="string" value="0.30"/>
     </node>
     
-    <node name="rtabmap_odom" pkg="rtabmap_ros" type="rgbd_odometry" output="screen">
+    <!-- <node name="rtabmap_odom" pkg="rtabmap_ros" type="rgbd_odometry" output="screen">
           <param name="frame_id"            type="string" value="base_link"/>
           <param name="approx_sync"        type="bool" value="true"/> 
 
-          <remap from="rgb/image"       to="/camera1/image_raw"/>
-      	  <remap from="depth/image"     to="/camera1/depth/image_raw"/>
-      	  <remap from="rgb/camera_info" to="/camera1/depth/camera_info"/>
-    </node>
+          <remap from="rgb/image"       to="/image_raw"/>
+      	  <remap from="depth/image"     to="/depth_image_raw"/>
+      	  <remap from="rgb/camera_info" to="/camera_info"/>
+    </node> -->
   </group>
 </launch>
